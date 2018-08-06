@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ES6</title>
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"> </script>-->
+</head>
+<body>
+    <!--<script type="text/babel"> -->
+    <script>
+        //Rest Parameters
+        /*
+        function test(a, b, ...c){
+            console.log(a);
+            console.log(b);
+            console.log(c);
+        }
+        test(1,2,3,4,5);
+        */
+        //Arrow function vs Normal function
+        function Person() {
+            this.i =1 ;
+            this.j =1 ;
+            console.log("Outside : ", this)
+            //normal function event (setTimeout) picks the instance from Window
+            // use bind operator to bind with the appropriate "this"
+            setTimeout(function(){
+                this.i++;
+                console.log("Normal Function this", this)
+                console.log("Normal Function", this.i);
+                },1000);
+            //}.bind(this),1000); // uncomment to find the same behavior as Arrow function
+
+            setTimeout(()=>{
+                this.j++;
+                console.log("Arrow Function this", this)
+                console.log("Arrow Function", this.j)
+                }
+            ,2000)
+        }
+        const p = new Person();
+     </script>
+</body>
+</html>
