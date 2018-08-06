@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>React</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"> </script>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!--SPA Rendered by react here-->
+    </div>
+</body>
+<script type="text/babel">
+const divStyleRed = {  color: 'red'};
+const divStyleBlack = {  color: 'black'};
+    function Red(props){
+        const jsx = <div>
+            <span style={props.highlight}>{props.sportname}</span>  <span>{props.price}</span>
+            </div>;
+            return jsx;
+    }
+
+    function LightBlue(props){
+        let section  = props.title;
+        const jsx1 = <div>
+        <h2>{props.title}</h2>
+                    <Red sportname="Football" price="$49.99" highlight={divStyleBlack}/>
+                    <Red sportname="Baseball" price="$9.99" highlight={divStyleBlack}/>
+                    <Red sportname="BasketBall" price="$29.99" highlight={divStyleRed}/>
+        
+                </div>
+        ;
+        const jsx2 = <div>
+        <h2>{props.title}</h2>
+                    <Red sportname="iPod Touch" price="$99.99" highlight={divStyleBlack}/>
+                    <Red sportname="iPhone 5" price="$399.99" highlight={divStyleRed}/>
+                    <Red sportname="Nexus 7" price="$199.99" highlight={divStyleBlack}/>
+        
+                </div>
+        ;
+        if (section =="Sporting Goods" ) {
+            return jsx1;
+        }else if(section == "Electronics"){
+            return jsx2;
+        }
+        
+    }
+
+    function Green(props){
+        const jsx = <div>
+                    <h1>Name   Price</h1>
+                    <LightBlue title="Sporting Goods"/>
+                    <LightBlue title="Electronics"/>
+                    </div>;
+        return jsx;
+    }
+
+    function Blue(props){
+        const jsx = <div>
+        <input type="text" placeholder="Search..."/>
+        <p><input type="checkbox"/>Only Show Product in Stock</p>
+        </div>;
+        return jsx;
+    }
+
+    function Orange(props){
+        const jsx = <div><Blue/>
+        <Green/></div>;
+        return jsx;
+    }
+
+    const spaNode = document.getElementById("app");
+    ReactDOM.render(<div>
+        <Orange/>
+        </div>, spaNode);
+</script>
+
+</html>
