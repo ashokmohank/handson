@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>React</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"> </script>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!--SPA Rendered by react here-->
+    </div>
+</body>
+<script type="text/babel">
+    //Step 1
+    //ReactDOM.render(<h1>Hello World!</h1>, document.getElementById("app"));
+    //Step 2
+    /*
+    const jsx = <h1>Hello World!</h1>;
+    const spaNode = document.getElementById("app");
+    ReactDOM.render(jsx, spaNode);
+    */
+    //Step 3 - Custom Components
+    /*
+    function HelloWorld(){
+        const jsx = <div>
+            <h1>Hello World!</h1>
+            </div>;
+            return jsx;
+    }
+    const spaNode = document.getElementById("app");
+    ReactDOM.render(<div>
+        <HelloWorld/>
+        <HelloWorld/>
+        </div>, spaNode);
+    */
+    //Step 4 - props (Properties) in Custom Components
+    /*
+    function HelloWorld(props){
+        const jsx = <div>
+            <h1>{props.greet} {props.name}</h1>
+            </div>;
+            return jsx;
+    }
+    const spaNode = document.getElementById("app");
+    ReactDOM.render(<div>
+        <HelloWorld name="World" greet="Hello"/>
+        <HelloWorld name="Universe" greet="Hi"/>
+        </div>, spaNode);
+    //Step 5 - Nesting Components
+    */
+    function HelloWorld(props){
+        const jsx = <div>
+            <Title a={props.greet} b={props.name}/>
+            <Body/>
+            </div>;
+            return jsx;
+    }
+
+    function Title(props){
+        const jsx = <h1>{props.a} {props.b}</h1>;
+        return jsx;
+    }
+
+    function Body(props){
+        const jsx = <p>Sample Content</p>;
+        return jsx;
+    }
+
+    const spaNode = document.getElementById("app");
+    ReactDOM.render(<div>
+        <HelloWorld name="World" greet="Hello"/>
+        <HelloWorld name="Universe" greet="Hi"/>
+        </div>, spaNode);
+</script>
+
+</html>
