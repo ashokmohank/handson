@@ -20,6 +20,7 @@
         test(1,2,3,4,5);
         */
         //Arrow function vs Normal function
+        /*
         function Person() {
             this.i =1 ;
             this.j =1 ;
@@ -41,6 +42,46 @@
             ,2000)
         }
         const p = new Person();
+        */
+        //Class - Prototype function & static function
+        class Parent {
+            constructor(a, b){
+                this.a = a;
+                this.b = b;
+            }
+            //Prototype Functions
+            add() {
+                return this.a + this.b;
+            }
+            sub() {
+                return this.a - this.b;
+            }
+            //Static Functions
+            static PI() {
+                return 3.14;
+            }
+        }
+        
+        class Child extends Parent{
+            constructor(a, b){
+                super(a, b);
+            }
+            multiply() {
+                return this.a * this.b ;
+            }
+            //inheritance
+            add() {
+                console.log("From child's add function")
+                return super.add()
+            }
+        }
+
+        let m = new Child(5,6);
+        Parent.PIX =  () => 3.14;
+        let s = Parent.PIX()
+        console.log(m.add())
+        console.log(s)
+
      </script>
 </body>
 </html>
