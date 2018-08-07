@@ -1,7 +1,8 @@
 import React from "react";
-import { Link, Route, Switch } from "react-router-dom";
+import { NavLink, Route, Switch } from "react-router-dom";
 import Home from "./Home";
 import AboutUs from "./AboutUs";
+import "./menu.css";
 class App extends React.Component {
   //1.
 
@@ -10,10 +11,14 @@ class App extends React.Component {
       <div>
         <ul>
           <li>
-            <Link to="/">Home</Link>
+            <NavLink exact activeClassName="activeMenu" to="/">
+              Home
+            </NavLink>
           </li>
           <li>
-            <Link to="/aboutus">About Us</Link>
+            <NavLink activeClassName="activeMenu" to="/aboutus">
+              About Us
+            </NavLink>
           </li>
         </ul>
 
