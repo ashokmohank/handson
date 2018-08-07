@@ -11,9 +11,11 @@ Recreate public/index.html and src/index.js
 
 - [JSX Javascript XML](#jsx)
 - [Styling](#styling)
-- [Redux State](#redux-state)
+- [React State](#react-state)
 - [Events](#events)
 - [Lifecycle Events](#lifecycle-events)
+- [Validating Props](#validating-props)
+- [Key](#key)
 
 ## JSX
 
@@ -35,7 +37,7 @@ Javascript XML Follows the rules of XML
 - style attribute value in html { color: "red"; font-size: 30;} has to converted to equivalent object in jsx as {color: "red", fontSize: 30}
 - External or Internal CSS as be utilized
 
-## Redux State
+## React State
 
 - Makes the page dynamic in response to either time or user event or server rendering or ajax calls.
 - Do NOT modify props
@@ -69,3 +71,32 @@ Refer 3_Lifecycle
 | WILL | componentWillMount | componentWillUpdate       | componentWillUnmount |
 |      | render             | render                    |                      |
 | DID  | componentDidMount  | componentDidUpdate        |                      |
+
+## Validating Props
+
+Good practice to validate props. A warning will be shown only in the development mode.
+
+> npm install --save prop-types
+
+[prop-types](https://www.npmjs.com/package/prop-types)
+
+## Key
+
+- Key ensures that diffing and Reconciliation takes place in an efficient manner.
+- Key should be unique
+- Elements generated in a iteration should have key
+  _Usual approach_
+
+> <ul\>
+> <li\>red</li\>
+> <li\>green</li\>
+> </ul\>
+
+_Good approach_
+
+> <ul\>
+>
+> <li key="red"\>red</li\>
+> <li key="green"\>green</li\>
+> <li key="blue"\>blue</li\>
+> </ul\>
