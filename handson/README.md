@@ -16,6 +16,8 @@ Recreate public/index.html and src/index.js
 - [Lifecycle Events](#lifecycle-events)
 - [Validating Props](#validating-props)
 - [Key](#key)
+- [Component Types](#component-types)
+- [React Router](#react-router)
 
 ## JSX
 
@@ -113,3 +115,10 @@ _Good approach_
   > <input type='text' ref={ node=>{
   > this.instancevariable = node; } }\/>
 - when using ref you cannot use 'value' attribute
+
+## React Router
+
+> npm install --save react-router-dom
+
+"exact" does a exact match with the Link to -> Route path
+BrowserRouter in index.js has to wrapped root component
