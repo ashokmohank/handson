@@ -100,3 +100,16 @@ _Good approach_
 > <li key="green"\>green</li\>
 > <li key="blue"\>blue</li\>
 > </ul\>
+
+## Component Types
+
+1.  Controlled Components (Two way binding)
+
+- Values are binded with State
+
+2.  Uncontrolled Components (One way binding)
+
+- Usage of 'ref' attribute to the components
+  > <input type='text' ref={ node=>{
+  > this.instancevariable = node; } }\/>
+- when using ref you cannot use 'value' attribute
