@@ -17,6 +17,7 @@
     </form>
     <h1 id="countValue">0</h1>
     <script>
+        /*2. Design Actions and State*/
         /*
         State :{count: 1}
     
@@ -26,9 +27,13 @@
         {type: "DECREMENT"}
         
         */
-        /*4. Design Actions with Dispatch invoked from view*/
+        /*5. Design Actions with Dispatch invoked from view*/
+        function incrementActionType() {
+            return { type: "INCREMENT" };
+        }
+
         function incrementAction() {
-            appStore.dispatch({ type: "INCREMENT" });
+            appStore.dispatch(incrementActionType());
         }
 
         function decrementAction() {
@@ -53,10 +58,10 @@
             console.log("newState ", newState);
             return newState;
         }
-        /*2. Create Store*/
+        /*4. Create Store*/
         let appStore = Redux.createStore(counterReducer)
 
-        /*5. Binding View to Store*/
+        /*6. Binding View to Store*/
         appStore.subscribe(() => {
             const count = appStore.getState().count;
             document.getElementById("countValue").innerText = count;

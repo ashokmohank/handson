@@ -19,6 +19,7 @@ Recreate public/index.html and src/index.js
 - [Component Types](#component-types)
 - [React Router](#react-router)
 - [Redux](#redux)
+- [react-redux](#react-redux)
 
 ## JSX
 
@@ -177,10 +178,58 @@ A2 --> D
 ```
 
 1.  Create a View
-2.  Create a Store
+2.  Design Actions and State
 3.  Create Reducer - with default state and handle actions and always returns a state
-4.  Design Actions - with store dispatcher
+4.  Create a Store( Initialize )
+5.  Create Actions - with store dispatcher
     a. Bind the actions to view - say onclick of button, invoke the action function to dispatch to store
-5.  Binding View to Show the Store Values
+6.  Binding View to Show the Store Values
     a. Use the store subscribe(), which is called whenever the store changes
     b. access the store objects via getState()
+
+## react-redux
+
+Summary of Steps to follow:
+
+1.  Create View
+2.  Design Action and State
+3.  Create Reducer
+4.  Create Store(inititalize)
+5.  Create Actions
+6.  Dispatch Actions from View
+7.  Binding View to Store
+
+    > npm install --save redux
+
+8.  Get createStore from Redux
+
+Store to View and View To Action binding is done by react-redux
+
+> npm install --save react-redux
+
+1.  import Provider
+2.  import 'connect' and the component with connect and export the connected component know as container
+
+Summary of Steps to follow:
+
+1.  Create View (Plain views)
+    a. components/App.js
+    b. components/Form.js
+    c. components/Display.js
+2.  Design Action and State
+    - state : {count: 0}
+    - Actions
+      a. {type: "INCREMENT"}
+      b. {type: "DECREMENT"}
+3.  Create Reducer
+    a. reducers/counterReducer.js
+    b. add the reducer function and action based manipulation to return the new state
+4.  Create Store(initialize)
+    a. in index.js, create a store by initializing with the reducer function as parameter
+    b. import Provider component and wrap the App component. In addition pass the attribute store with the initialized store
+5.  Create Actions
+    a. In actions/counterActions.js, create a function to return action type
+6.  Dispatch Actions from View
+    a. import connect and form a connected componenet as container
+    b. once connected, action handlers would have the dispacher prop type
+7.  Binding View to Store
