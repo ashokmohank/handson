@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Redux</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.0.0/redux.js"></script>
+</head>
+
+<body>
+    <!--1. Create View-->
+    <form>
+        <input type="button" value="Increment" onclick="incrementAction()" /> &nbsp;
+        <input type="button" value="Decrement" onclick="decrementAction()" />
+    </form>
+    <h1 id="countValue">0</h1>
+    <script>
+        /*
+        State :{count: 1}
+    
+        Actions:
+        {type: "INCREMENT"}
+    
+        {type: "DECREMENT"}
+        
+        */
+        /*4. Design Actions with Dispatch invoked from view*/
+        function incrementAction() {
+            appStore.dispatch({ type: "INCREMENT" });
+        }
+
+        function decrementAction() {
+            appStore.dispatch({ type: "DECREMENT" });
+        }
+
+        /*3. Reducer*/
+        function counterReducer(prevState = { count: 0 }, action) {
+            let newState;
+            console.log("Action ", action.type);
+            switch (action.type) {
+                case "INCREMENT":
+                    newState = { ...prevState, count: prevState.count + 1 }
+                    break;
+                case "DECREMENT":
+                    newState = { ...prevState, count: prevState.count - 1 }
+                    break;
+                default:
+                    newState = { ...prevState }
+                    break;
+            }
+            console.log("newState ", newState);
+            return newState;
+        }
+        /*2. Create Store*/
+        let appStore = Redux.createStore(counterReducer)
+
+        /*5. Binding View to Store*/
+        appStore.subscribe(() => {
+            const count = appStore.getState().count;
+            document.getElementById("countValue").innerText = count;
+        })
+    </script>
+</body>
+
+</html>

@@ -18,6 +18,7 @@ Recreate public/index.html and src/index.js
 - [Key](#key)
 - [Component Types](#component-types)
 - [React Router](#react-router)
+- [Redux](#redux)
 
 ## JSX
 
@@ -107,7 +108,8 @@ _Good approach_
 
 1.  Controlled Components (Two way binding)
 
-- Values are binded with State
+- Values are binded with State with handlers on each of the control
+- Two way binding, i.e the values/changes are written back to the html controls and also maintained by the react's state
 
 2.  Uncontrolled Components (One way binding)
 
@@ -115,10 +117,70 @@ _Good approach_
   > <input type='text' ref={ node=>{
   > this.instancevariable = node; } }\/>
 - when using ref you cannot use 'value' attribute
+- One way binding, i.e control changes are binded only on one action of the form
 
 ## React Router
 
 > npm install --save react-router-dom
 
-"exact" does a exact match with the Link to -> Route path
-BrowserRouter in index.js has to wrapped root component
+-"exact" does a exact match with the Link to -> Route path
+BrowserRouter in index.js has to wrapped root component which has Link or NavLik and Route components
+
+-Use HashRouter, only when it is a static content loading other wise the recommendation is to use BrowserRouter which could help server get the access log
+
+_Redirect and Prompt_
+
+> Refer 7a_ReactRouter
+
+_Route Params_
+
+> <Route path="//aboutus//:id" component={AboutUs} //>
+
+It can be access via this.props.params
+
+_Passing attribute to Components called in Route_
+
+> Refer 7b_ReactRouter
+
+<Route
+path="//get//:id"
+render={() => {
+const Temp = withRouter(GetInfo);
+return <Temp attr1="test" //>;
+}}
+//>
+
+- Use withRouter, if you want to pass attributes to the components via the route
+
+## Redux
+
+1.  Immutability
+    Do not modify the inputs. Manipulate on the copy of input.
+    reducer
+2.  Pure Functions
+    Don't use global variable
+    No Input/output
+    Don't make DB/API Calls
+    Don't Mutate object params
+
+FLUX Patterns
+
+```mermaid
+graph LR
+A(Action - Sever/Timer Event) --> D[Dispatcher]
+D --> S[Store]
+S --prevState + Action--> R[Reducer]
+R -- newState--> S
+S --> V[View]
+V --> A2(Action - UI Event )
+A2 --> D
+```
+
+1.  Create a View
+2.  Create a Store
+3.  Create Reducer - with default state and handle actions and always returns a state
+4.  Design Actions - with store dispatcher
+    a. Bind the actions to view - say onclick of button, invoke the action function to dispatch to store
+5.  Binding View to Show the Store Values
+    a. Use the store subscribe(), which is called whenever the store changes
+    b. access the store objects via getState()
