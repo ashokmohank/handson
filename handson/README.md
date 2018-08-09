@@ -210,7 +210,9 @@ Store to View and View To Action binding is done by react-redux
 1.  import Provider
 2.  import 'connect' and the component with connect and export the connected component know as container
 
-Summary of Steps to follow:
+Detailed Steps to follow:
+
+> Refer 8_ReactRedux
 
 1.  Create View (Plain views)
     a. components/App.js
@@ -230,6 +232,20 @@ Summary of Steps to follow:
 5.  Create Actions
     a. In actions/counterActions.js, create a function to return action type
 6.  Dispatch Actions from View
-    a. import connect and form a connected componenet as container
-    b. once connected, action handlers would have the dispacher prop type
+    a. import connect and form a connected component as container for Form.js
+    b. once connected, action handlers would have the dispach prop type
+    b. on logging the 'this', you could find the 'dispach' object, to which you can pass the action handler (types of action - based on which the reducer would behave)
 7.  Binding View to Store
+    a. import connect and form a connected component as container for Display.js
+    b. create a mapStateToProps(state, ownProps) to handle and accept the state from Redux Store and pass the state as props to the Display component
+
+_Code Refactor_
+
+> Refer 8a_ReactRedux
+
+1.  Create a container directory and attempt make the components pure
+2.  Move the mapStateToProps and create mapDispatchToProps - and move the handlers to the container
+3.  use connect to bind mapStateToProps, mapDispatchToProps with the component
+
+> Intall redux devtools chrome extension
+> install redux-devtools-extension --save-dev
