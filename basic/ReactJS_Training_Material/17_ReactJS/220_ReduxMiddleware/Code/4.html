@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Redux Middleware</title>
+  <script src="https://unpkg.com/redux@latest/dist/redux.min.js"></script>
+</head>
+
+<body>
+  <div>
+    <h1>
+      Counter:
+      <span id="value">0</span>
+    </h1>
+    <br/>
+    <br/>
+    <button id="increment"> + </button>
+    <button id="decrement"> - </button>
+    <br/>
+    <br/>
+    <br/>
+    <button id="dispatcherror"> Dispatch Error </button>
+
+  </div>
+  <script>
+    function counterReducer(state, action) {
+
+      //Set default value for state parameter
+      if (typeof state === 'undefined') {
+        return 0;
+      }
+
+      switch (action.type) {
+        case 'INCREMENT':
+          return state + 1;
+        case 'DECREMENT':
+          return state - 1;
+        case 'ERROR_ACTION':
+          throw Error("OOPS!");
+          return state;
+        default:
+          return state;
+      }
+    }
+
+    //Custom Logger
+    const customLogger = function (store) {
+      return function (next) {
+        return function (action) {
+          console.log('Dispatching: ', action);
+          console.log('Current State: ', store.getState());
+          next(action);
+          console.log('Next State: ', store.getState());
+        }
+      }
+    }
+
+    //Custom Error Handler
+    const customErrHandler = function (store) {
+      return function (next) {
+        return function (action) {
+          //check if any error is happening in the reducer
+          try {
+            next(action);
+          } catch (error) {
+            console.log('ERROR: ' + error);
+          }
+        }
+      }
+    }
+
+    //Multiple middleware can be applied to execute in a chain.
+    var store = Redux.createStore(counterReducer, Redux.applyMiddleware(customLogger, customErrHandler));
+
+    var valueElement = document.getElementById('value');
+
+    function render() {
+      valueElement.innerHTML = store.getState().toString();
+    }
+    render();
+
+    //Update counter whenever store changes
+    store.subscribe(render)
+
+    document.getElementById('increment')
+      .addEventListener('click', function () {
+        store.dispatch({
+          type: 'INCREMENT'
+        })
+      });
+
+    document.getElementById('decrement')
+      .addEventListener('click', function () {
+        store.dispatch({
+          type: 'DECREMENT'
+        })
+      });
+
+    document.getElementById('dispatcherror')
+      .addEventListener('click', function () {
+        store.dispatch({
+          type: 'ERROR_ACTION'
+        })
+      });
+  </script>
+</body>
+
+</html>

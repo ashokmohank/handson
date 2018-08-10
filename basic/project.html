@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>To Do List</title>
+    <style>
+        .inactivetask {
+            text-decoration: line-through;
+        }
+
+        .activetask {
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <a>All </a> |
+    <a> Active </a> |
+    <a> Completed</a>
+    <form>
+        <input type="text" placeholder="To Item" /> &nbsp;
+        <input type="button" value="Add Todo">
+    </form>
+    </br>
+    </br>
+    <ul>
+        <li class="activetask">
+            Learn React
+        </li>
+        <li class="inactivetask">
+            Learn React-Redux
+        </li>
+        <li class="activetask">
+            Learn Redux
+        </li>
+        <li class="activetask">
+            Learn Webpack
+        </li>
+    </ul>
+</body>
+
+</html>

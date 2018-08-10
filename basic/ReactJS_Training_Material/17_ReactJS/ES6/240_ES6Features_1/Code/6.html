@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>ES6 Features</title>
+  <script>
+    //Property & method value shorthands
+    const fname = 'Sreekanth';
+    const lname = "M E"
+
+    //Before --> Long form
+    const x = {
+      fname: fname,
+      lname: lname,
+      sayHello: function () {
+        return "Hello";
+      }
+    };
+
+    //Now --> Short form
+    const a = {
+      fname,
+      lname,
+      sayHello() {
+        return "Hello"; // "function" keyword can be skipped
+      }
+    }
+
+    console.log("x.lname: " + x.fname);
+    console.log("x.lname: " + x.lname);
+    console.log("x.sayHello(): " + x.sayHello());
+    console.log("a.lname: " + a.fname);
+    console.log("a.lname: " + a.lname);
+    console.log("a.sayHello(): " + a.sayHello());
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

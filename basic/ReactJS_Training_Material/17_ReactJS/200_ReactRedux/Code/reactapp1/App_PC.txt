@@ -1,0 +1,102 @@
+import React from 'react';
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.handleClick = this
+      .handleClick
+      .bind(this);
+
+    this.state = {
+      count: 0,
+      color: 'red',
+      size: 10,
+    };
+  }
+
+  handleClick(ev) {
+    this.setState((prevState, props) => ({
+      count: prevState.count + 1,
+    }));
+    ev.preventDefault();
+  }
+
+  render() {
+    console.log('------------------------------------');
+    console.log('Rendering App..');
+    return (
+      <div>
+        <h1>
+          Counter:
+        </h1>
+        <form action="">
+          <button onClick={this.handleClick}>Increment</button>
+        </form>
+
+        <hr />
+        <Display
+          color={this.state.color}
+          count={this.state.count}
+          size={this.state.size} 
+        />
+
+      </div>
+    );
+  }
+}
+
+//------------------------------------------------
+class Display extends React.Component {
+  render() {
+    console.log('Rendering Display..');
+    return (
+      <div>
+        <DisplayCount content={this.props.count} />
+        <DisplayColor content={this.props.color} />
+        <DisplaySize content={this.props.size} />
+      </div>
+    );
+  }
+}
+
+//------------------------------------------------
+class DisplayCount extends React.Component {
+  render() {
+    console.log('Rendering DisplayCount..');
+    return (
+      <h2>{this.props.content}</h2>
+    );
+  }
+}
+
+//------------------------------------------------
+class DisplayColor extends React.Component {
+
+  shouldComponentUpdate(nextProps, nextState) {
+    if (this.props.content !== nextProps.content) {
+      return true;
+    }
+    return false;
+  }
+
+  render() {
+    console.log('Rendering DisplayColor..');
+    return (
+      <h2>{this.props.content}</h2>
+    );
+  }
+}
+
+//------------------------------------------------
+class DisplaySize extends React.PureComponent {
+
+  render() {
+    console.log('Rendering DisplaySize..');
+    return (
+      <h2>{this.props.content}</h2>
+    );
+  }
+}
+
+export default App;

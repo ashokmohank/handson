@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>ES6 Arrow Functions</title>
+  <script>
+    //ES6 Arrow Functions
+    //Arrow functions always have to be function expressions. They can't be declared separately
+
+    let sayHello = function sayHello(fname, lname) {
+      let fullname = fname + " " + lname;
+      return fullname;
+    };
+
+    //Arrow functions are anonymous. 
+    //No need for 'function' keyword
+    let sayHelloArrow = (fname, lname) => {
+      let fullname = fname + " " + lname;
+      return fullname;
+    };
+
+    console.log("sayHello('Sreekanth', 'ME'): " + sayHello('Sreekanth', 'ME'));
+    console.log("sayHelloArrow('Sreekanth', 'ME'): " + sayHelloArrow('Sreekanth', 'ME'));
+    console.log("---------------------------------------------------------");
+
+    let adder = function add(a, b) {
+      return a + b;
+    };
+
+    //If no statements in body except return statement, brackets can be left out
+    let adderArrow = (a, b) => a + b;
+
+    console.log("adder(3, 4): " + adder(3, 4));
+    console.log("adderArrow(3, 4): " + adderArrow(3, 4));
+    console.log("---------------------------------------------------------");
+
+    let sayHi = function sayHi(fullname) {
+      return `Hi ${fullname}`;
+    };
+
+    //If only one parameter, brackets can be left out
+    let sayHiArrow = fullname => `Hi ${fullname}`;
+
+    console.log("sayHi('Sreekanth ME'): " + sayHi('Sreekanth ME'));
+    console.log("sayHiArrow('Sreekanth ME'): " + sayHiArrow('Sreekanth ME'));
+    console.log("---------------------------------------------------------");
+
+    let getObject = function getObject() {
+      return {
+        fname: "Sreekanth",
+        lname: "M E"
+      };
+    };
+
+    //If NO parameters, brackets are needed
+    //If no other statement except return statement, and if returning an object literal, enclose the object literal in brackets. This is because, curly braces are also used to define a function statement block.
+    let getObjectArrow = () => ({
+      fname: "Sreekanth",
+      lname: "M E"
+    });
+
+    console.log("getObject().fname: " + getObject().fname);
+    console.log("getObjectArrow().fname: " + getObjectArrow().fname);
+    console.log("---------------------------------------------------------");
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

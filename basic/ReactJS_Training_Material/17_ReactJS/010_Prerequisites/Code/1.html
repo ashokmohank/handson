@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <title></title>
+</head>
+
+<body>
+  <div id="root">
+  </div>
+  <script type="text/javascript">
+    //Simple example using ES6 arrow function inside text/javascript
+    //Works on chrome version 60.0
+    //Fails on IE version 11.01 because IE doesn't support arrow function
+
+    let arrowFunc = (a, b) => {
+      return (a + b);
+    }
+
+    console.log("5+9=" + arrowFunc(5, 9));
+    console.log("15+9=" + arrowFunc(15, 9));
+    console.log("5+91=" + arrowFunc(5, 91));
+  </script>
+</body>
+
+</html>

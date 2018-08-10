@@ -1,0 +1,14 @@
+{
+  "name": "webpack-intro",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack src/index.js public/build.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^3.5.5"
+  }
+}

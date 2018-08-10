@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Promise</title>
+  <script>
+    //JS Promise
+    /*
+      Creating a Promise:
+      A Promise object is created using the new keyword and its constructor. This constructor takes as its argument a function, called the "executor function". This function should take two functions as parameters. The first of these functions (resolve) is called when the asynchronous task completes successfully and returns the results of the task as a value. The second (reject) is called when the task fails, and returns the reason for failure, which is typically an error object.
+
+      Return promise object from an (async) function so that the promise can be consumed. 
+      In this program, oneThing(), secondThing() and thirdThing() are functions that return a promise.
+    */
+
+    function oneThing(x) {
+      return (new Promise((resolve, reject) => {
+
+        //Using seTimeout async call
+        setTimeout(() => {
+          if (x % 2 === 0) {
+            resolve(x);
+          } else {
+            reject('-' + x + '- is not a multiple of 2!');
+          }
+        }, 2000);
+
+
+      }));
+    }
+
+    function secondThing(y) {
+      return (new Promise((resolve, reject) => {
+
+        setTimeout(() => {
+          if (y % 5 === 0) {
+            resolve(y);
+          } else {
+            reject('-' + y + '- is not a multiple of 5!');
+          }
+        }, 2000);
+
+      }));
+    }
+
+    function thirdThing(z) {
+      return (new Promise((resolve, reject) => {
+
+        setTimeout(() => {
+          if (z % 7 === 0) {
+            resolve(z);
+          } else {
+            reject('-' + z + '- is not a multiple of 7!');
+          }
+        }, 2000);
+
+      }));
+    }
+
+    //runAllThings() is just a wrapper for the promise call. Won't be needed if promise is called only once in the code.
+    function runAllThings(test) {
+      console.log('runAllThings(-' + test + '-):');
+
+      //Promise chaining and error handling. Error in ANY link of the chain will be caught.
+      oneThing(test)
+        .then((result) => {
+          //Return the second promise
+          return secondThing(result);
+        })
+        .then((newResult) => {
+          //Return the third promise
+          return thirdThing(newResult);
+        })
+        .then((newestResult) => {
+          //All promises in the chain succeeded
+          console.log("*****SUCCESS: -" + newestResult + '- is a multiple of 2, 5 and 7');
+        })
+        .catch((error) => {
+          //An error occured in one of the promises
+          console.log("~~~ERROR: " + error);
+        })
+        .then(() => {
+          //Will always execute whether error or not.
+          console.log("--------------" + test + "--------------");
+        });
+    }
+
+    //Call promise chain with different input values
+    runAllThings(2);
+    runAllThings(5);
+    runAllThings(10);
+    runAllThings(70);
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

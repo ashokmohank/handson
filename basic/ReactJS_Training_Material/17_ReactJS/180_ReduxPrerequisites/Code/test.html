@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Redux Demo</title>
+
+  <script src="https://unpkg.com/redux@latest/dist/redux.min.js"></script>
+</head>
+
+<body>
+
+  <form action="">
+    <input type="number" id="stepInput" onchange="updateStep()" value="1" />&nbsp;&nbsp;
+    <button type="button" onclick="increment()">Increment</button>&nbsp;&nbsp;
+    <button type="button" onclick="decrement()">Decrement</button>
+  </form>
+  <br/>
+  <br/>
+
+  <h2 id="divCount">0</h2>
+  <h2 id="divStep">1</h2>
+
+  <script>
+    /*
+    //Store design
+      {
+        count:0,
+        step:1
+      }
+
+    //Actions
+    {
+      type: 'INCREMENT',
+      payload: 5
+    }
+    {
+      type: 'DECREMENT',
+      payload: 5
+    }
+    {
+      type: 'STEPCHANGED',
+      payload: 3
+    }
+
+    */
+
+    //Reducer Function
+    function counterReducer(state = { count: 0 }, action) {
+
+      let newState;
+
+      switch (action.type) {
+        case "INCREMENT":
+          newState = {
+            ...state, count: (state.count + Number.parseInt(action.payload))
+          };
+          break;
+        case "DECREMENT":
+          newState = {
+            ...state, count: (state.count - action.payload)
+          };
+          break;
+        default:
+          newState = { ...state };
+          break;
+      }
+
+      console.log("Old State: ", state);
+      console.log("New State: ", newState);
+
+      return newState;
+    }
+
+    function stepReducer(state = { step: 1 }, action) {
+
+      let newState;
+
+      switch (action.type) {
+        case "STEPCHANGED":
+          newState = {
+            ...state, step: action.payload
+          };
+          break;
+        default:
+          newState = { ...state };
+          break;
+      }
+
+      console.log("Old State--STEP: ", state);
+      console.log("New State--STEP: ", newState);
+
+      return newState;
+    }
+
+    var store = Redux.createStore(Redux.combineReducers({ counterReducer: counterReducer, stepReducer: stepReducer }));
+
+    console.log("***STATE: ", store.getState());
+    var counterNode = document.getElementById("divCount");
+    var stepNode = document.getElementById("divStep");
+
+    store.subscribe(() => {
+      console.log("store changed", store.getState());
+
+      counterNode.textContent = store.getState().counterReducer.count;
+
+      stepNode.textContent = store.getState().stepReducer.step;
+    });
+
+    function increment() {
+
+      store.dispatch({
+        type: 'INCREMENT',
+        payload: store.getState().stepReducer.step
+      });
+
+      //var counterNode = document.getElementById("divCount");
+      //counterNode.textContent = "test";
+    }
+
+    function decrement() {
+
+      store.dispatch({
+        type: 'DECREMENT',
+        payload: store.getState().stepReducer.step
+      });
+    }
+
+    function updateStep() {
+      store.dispatch({
+        type: 'STEPCHANGED',
+        payload: document.getElementById("stepInput").value
+      });
+    }
+  </script>
+</body>
+
+</html>

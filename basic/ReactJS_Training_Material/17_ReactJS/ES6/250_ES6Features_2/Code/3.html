@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>ES6 Features</title>
+  <script>
+    //Spread Operator
+    function spreadFunc1(p1, p2, p3, p4) {
+      console.log(`p1: ${p1}`);
+      console.log(`p2: ${p2}`);
+      console.log(`p3: ${p3}`);
+      console.log(`p4: ${p4}`);
+    }
+
+    spreadFunc1(...[10, 20, 30]); //Spread in function call
+    console.log(`-----------------------------`);
+    spreadFunc1(10, ...[20, 30], 40);
+
+    console.log(`-----------------------------`);
+
+    //Spread with arrays
+    let a = [1, 2];
+    let b = [3, 4, 5];
+    console.log(`a: ${a}`); //[1, 2]
+    console.log(`b: ${b}`); //[3, 4, 5]
+
+    let c = [...a]; //copy array
+    console.log(`c: ${c}`); //[1, 2]
+
+    let d = [...a, ...b]; //concat array
+    console.log(`d: ${d}`); //[1, 2, 3, 4, 5]
+
+    a = [...b, ...a]; //unshift array
+    console.log(`a: ${a}`); //[3, 4, 5, 1, 2]
+
+    let e = [100, 200, 300, ...b, 400, 500]; //A complex example
+    console.log(`e: ${e}`); //[100, 200, 300, 3, 4, 5, 400, 500]
+    console.log(`--------------------------------`);
+
+    //Spread in object literals
+    var obj1 = {
+      foo: 'bar',
+      x: 42
+    };
+    var obj2 = {
+      foo: 'baz',
+      y: 13
+    };
+
+    var clonedObj = {
+      ...obj1
+    }; // Object { foo: "bar", x: 42 }
+
+    var mergedObj = {
+      ...obj1,
+      ...obj2
+    }; // Object { foo: "baz", x: 42, y: 13 }
+
+    console.log("obj1: ");
+    console.log(obj1);
+    console.log("obj2: ");
+    console.log(obj2);
+    console.log("clonedObj: ");
+    console.log(clonedObj);
+    console.log("mergedObj: ");
+    console.log(mergedObj);
+
+    console.log(`--------------------------------`);
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

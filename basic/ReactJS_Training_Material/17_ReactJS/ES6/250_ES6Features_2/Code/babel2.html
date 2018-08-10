@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <title></title>
+  <script src="js/babel.min.js"></script>
+</head>
+
+<body>
+  <div id="root">
+  </div>
+  <script type="text/babel">
+    //Simple example using ES6 arrow function inside text/babel
+
+    //NOTE: VS Code editor is not processing text/babel in HTML file properly. 
+    //So use sublimetext instead 
+
+    //Works on chrome version 60.0 
+    //Works on IE version 11.01 also because though IE doesn't support arrow
+    //function, babel transpiler makes it work on IE 
+
+    let arrowFunc = (a , b) => { 
+        return (a+b);
+     } 
+
+    console.log("5+9="+ arrowFunc(5, 9));
+    console.log("15+9="+ arrowFunc(15, 9));
+    console.log("5+91="+ arrowFunc(5, 91));
+
+  </script>
+</body>
+
+</html>

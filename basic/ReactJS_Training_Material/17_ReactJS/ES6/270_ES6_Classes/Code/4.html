@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>ES6 - Class</title>
+  <script>
+    //Setter and Getter methods
+    class Parent {
+      constructor(fname, lname) {
+        this.fname = fname;
+        this.lname = lname;
+        this.m = "";
+      }
+
+      getFullName() {
+        return (this.fname + " " + this.m + " " + this.lname);
+      }
+
+      set mname(value) {
+        this.m = value;
+      }
+
+      get mname() {
+        return this.m;
+      }
+    }
+
+    let p = new Parent("Mary", "Doe");
+    console.log("p.getFullName(): " + p.getFullName())
+    p.mname = "Elizabeth";
+    console.log("p.mname: " + p.mname)
+    console.log("p.getFullName(): " + p.getFullName())
+    console.log("-----------------------------------------------");
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

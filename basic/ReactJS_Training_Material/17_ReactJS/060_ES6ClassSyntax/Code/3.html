@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Component Properties</title>
+    <script src="https://unpkg.com/react@15.6.0/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@15.6.0/dist/react-dom.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+      const rootNode = document.getElementById('root');
+
+      /*
+        class SayHello extends React.Component {
+
+          //Set defaults for properties inside class declaration
+          static defaultProps = {
+            name: "World"
+          };
+
+          render() {
+
+            console.log(this.props);
+            console.log(`this.props.name: ${this.props.name}`);
+            console.log(`this.props.website: ${this.props.website}`);
+            console.log(`----------------------------`);
+
+            return (
+              <h1>Hello {this.props.name}!</h1>
+            )
+          }
+
+        }
+      */
+     
+      const SayHello = React.createClass({
+
+        defaultProps: {
+          name: "World"
+        },
+        render: function (){
+          console.log(this.props);
+          console.log(`this.props.name: ${this.props.name}`);
+          console.log(`this.props.website: ${this.props.website}`);
+          console.log(`----------------------------`);
+
+          return (
+            <h1>Hello {this.props.name}!</h1>
+          )
+        }
+      });
+
+      /*
+      React.createClass() is now deprecated. If it is used, the below warning is shown by React:
+       
+      Warning: Accessing createClass via the main React package is deprecated, and will be removed in React v16.0. Use a plain JavaScript class instead.
+      */
+    
+      ReactDOM.render(
+        <div>
+          <SayHello name="World"/>
+           <SayHello name="Sreekanth" website="SreekanthME.com"/>
+          <SayHello/>
+        </div>, 
+        rootNode);
+
+    </script>
+</body>
+
+</html>

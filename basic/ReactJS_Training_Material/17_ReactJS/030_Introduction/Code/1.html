@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <script src="https://unpkg.com/react@16.0.0/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16.0.0/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <!--script type is text/babel-->
+    <script type="text/babel">
+      const rootNode = document.getElementById('root');
+
+      //JSX string must not be enclosed in quotes
+      const jsxString = <h1>Hello, world!</h1>;
+
+      ReactDOM.render(jsxString, rootNode);
+
+    </script>
+  </body>
+</html>

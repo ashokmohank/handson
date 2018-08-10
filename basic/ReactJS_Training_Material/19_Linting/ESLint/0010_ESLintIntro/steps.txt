@@ -1,0 +1,13 @@
+Install ESLint extension of VS Code. 
+Restart or reload the browser to activate the extension.
+----------------------------
+Install ESLInt NPM package globally.
+>> Run "eslint --init". This will create a .eslintrc
+---------------------------
+When setting up ESLint for VS-Code, it is important to install ESLint in the local folder. Otherwise, it does not work.
+The Airbnb style guide package needs ESLint to be available locally.
+
+>> Run "npm install eslint --saveDev"
+----------------------------
+.eslintrc file can be edited to add / remove linting rules.
+----------------------------

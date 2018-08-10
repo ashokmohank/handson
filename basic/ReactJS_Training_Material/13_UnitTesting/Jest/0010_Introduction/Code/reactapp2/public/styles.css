@@ -1,0 +1,11 @@
+.hovered {
+  color: greenyellow;
+  text-decoration: none;
+  font-size: 25px;
+}
+
+.normal {
+  color: firebrick;
+  text-decoration: none;
+  font-size: 25px;
+}

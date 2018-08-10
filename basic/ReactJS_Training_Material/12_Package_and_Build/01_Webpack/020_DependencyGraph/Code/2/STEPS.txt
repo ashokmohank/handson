@@ -1,0 +1,8 @@
+package.json is unchanged from previous example.
+
+index.js has 2-level dependencies
+
+
+----------------------------------
+npm run build
+

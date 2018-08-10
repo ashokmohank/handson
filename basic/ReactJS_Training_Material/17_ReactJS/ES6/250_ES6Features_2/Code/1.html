@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>ES6 Features</title>
+  <script>
+    //Destructuring Assignment
+
+    //Array destructuring
+    let x = [1, 2, 3, 4, 5, 6];
+
+    [a, b, c] = x; //Basic variable assignment
+
+    var [d, e, f] = [1, 2, 3, 4, 5, 6]; //Assignment separate from declaration
+
+    var [g = 51, , h = 52, i = 53, j] = [7, 8, 9]; //Default values & ignoring values of no interest
+
+    console.log(`a: ${a}`); //1
+    console.log(`b: ${b}`); //2
+    console.log(`c: ${c}`); //3
+    console.log(`d: ${d}`); //1
+    console.log(`e: ${e}`); //2
+    console.log(`f: ${f}`); //3
+    console.log(`g: ${g}`); //7
+    console.log(`h: ${h}`); //9
+    console.log(`i: ${i}`); //53
+    console.log(`j: ${j}`); //undefined
+    console.log(`--------------------------------------`);
+
+    //Object destructuring
+    //Assignment variable name must match object keyname
+    let y = {
+      p: 100,
+      q: 200,
+      r: 300,
+      s: 400,
+      t: 500,
+      u: 600
+    };
+
+    ({
+      p,
+      q,
+      r,
+      M, //If no corresponding key value, will get 'undefined'
+      s: N, //Assigning to new variable names. Note the : sign for alias
+      V = 1000 //Default values. Note the = sign (: is not used for assigment)
+    } = y); //Assignment without declaration
+
+    var {
+      s,
+      t,
+      u
+    } = y; //Basic assignment
+
+    console.log(`p: ${p}`); //100
+    console.log(`q: ${q}`); //200
+    console.log(`r: ${r}`); //300
+    console.log(`M: ${M}`); //undefined
+    console.log(`N: ${N}`); //400
+    console.log(`s: ${s}`); //400
+    console.log(`t: ${t}`); //500
+    console.log(`u: ${u}`); //600
+    console.log(`V: ${V}`); //1000
+    console.log(`--------------------------------------`);
+
+    //Rest syntax in array destructuring
+    var [a, ...b] = [1, 2, 3];
+
+    console.log(`a: ${a}`); //1
+    console.log(`b: ${b}`); //[2, 3]
+
+    console.log(`--------------------------------------`);
+
+    //Rest syntax in Object Destructuring
+    var {
+      a,
+      b,
+      ...xyz
+    } = {
+      a: 10,
+      b: 20,
+      c: 30,
+      d: 40
+    }
+
+    console.log(`a: ${a}`); //10
+    console.log(`b: ${b}`); //20
+    console.log(`xyz: `); //{c:30, d:40}
+    console.log(xyz); //{c:30, d:40}
+    console.log(`--------------------------------------`);
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

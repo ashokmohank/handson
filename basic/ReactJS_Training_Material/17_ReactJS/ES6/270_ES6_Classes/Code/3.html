@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>ES6 - Class</title>
+  <script>
+    //Inheritance
+    class Parent {
+      constructor(fname, lname) {
+        this.fname = fname;
+        this.lname = lname;
+      }
+
+      getFullName() {
+        return (this.fname + " " + this.lname);
+      }
+    }
+
+    //'extends' keyword is used for inheritance
+    class Child extends Parent {
+      constructor(fname, mname, lname) {
+        super(fname, lname);
+        this.mname = mname;
+      }
+
+      getFullName() {
+        return (this.fname + " " + this.mname + " " + this.lname);
+      }
+
+      sayHello() {
+        return "Hello " + super.getFullName();
+      }
+    }
+
+    let p = new Parent("John", "Doe");
+    let c = new Child("Mary", "Elizabeth", "Doe");
+
+    console.log("p.getFullName(): " + p.getFullName());
+    console.log("c.getFullName(): " + c.getFullName());
+    console.log("c.sayHello(): " + c.sayHello());
+    console.log("c instance of Child: " + (c instanceof Child));
+    console.log("c instance of Parent: " + (c instanceof Parent));
+    console.log("-----------------------------------------------");
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

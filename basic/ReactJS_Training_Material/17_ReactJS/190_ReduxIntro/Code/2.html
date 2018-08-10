@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Redux Demo</title>
+  <script src="https://unpkg.com/redux@latest/dist/redux.min.js"></script>
+
+  <script>
+    function Increment() {
+      store.dispatch({
+        type: 'INCREMENT'
+      });
+
+      return false;
+    }
+
+    function Decrement() {
+      store.dispatch({
+        type: 'DECREMENT'
+      });
+
+      return false;
+    }
+
+    function reducerCounter(state = {
+      count: 0
+    }, action) {
+
+      let newState;
+
+      switch (action.type) {
+        case "INCREMENT":
+          newState = Object.assign({}, state, {
+            count: state.count + 1
+          });
+          break;
+        case "DECREMENT":
+          newState = Object.assign({}, state, {
+            count: state.count - 1
+          });
+          break;
+        default:
+          newState = Object.assign({}, state);
+          break;
+      }
+
+      return newState;
+    }
+
+    const store = Redux.createStore(reducerCounter);
+
+    store.subscribe(() => {
+      console.log(store.getState().count);
+      document.getElementById("ans").innerHTML = "Counter: " + store.getState().count;
+    });
+  </script>
+
+</head>
+
+<body>
+
+  <div>
+    <p id="ans">Counter: 0</p>
+    <form action="">
+      <button type="button" onclick="Increment()">+</button>
+      <button type="button" onclick="Decrement()">-</button>
+    </form>
+  </div>
+
+
+</body>
+
+</html>

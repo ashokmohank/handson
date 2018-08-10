@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>ES6 Features</title>
+  <script>
+    //Default function parameters
+    function sayHello(greet = "Hello", who = 'World') {
+      return (greet + " " + who + "!");
+    }
+
+    console.log("sayHello('Hi',Sreekanth'): " + sayHello('Hi', 'Sreekanth'));
+    console.log("sayHello('Hi'): " + sayHello('Hi'));
+    console.log("sayHello(): " + sayHello());
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

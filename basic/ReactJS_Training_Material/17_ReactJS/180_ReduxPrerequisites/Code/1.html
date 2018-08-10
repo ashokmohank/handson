@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>JS Mutable</title>
+  <script>
+    //Primitives are Immutable
+    let a = 100;
+    console.log("a: " + a);
+
+    let b = a;
+    a = 50;
+
+    console.log("a: " + a);
+    console.log("b: " + b);
+    console.log("-------------------------------------------");
+
+    //Objects are Mutable
+    let p = [100, 200, 300, 400];
+    console.log("p: " + p);
+    let q = p;
+    p.push(500); //Push mutates the arrray. Array is also type of an object.
+
+    console.log("p: " + p);
+    console.log("q: " + q);
+    console.log("-------------------------------------------");
+
+    let x = {
+      name: "Sreekanth",
+      website: "SreekanthME.com",
+      profession: "Corporate Trainer"
+    };
+    console.log("x: ");
+    console.log(x);
+    let y = x;
+    x.profession = "Freelance Consultant";
+
+    console.log("x: ");
+    console.log(x);
+    console.log("y: ");
+    console.log(y);
+    console.log("-------------------------------------------");
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

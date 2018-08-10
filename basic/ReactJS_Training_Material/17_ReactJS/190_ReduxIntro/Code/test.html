@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Redux Example</title>
+
+  <script src="https://unpkg.com/redux@latest/dist/redux.min.js"></script>
+
+  <script>
+    /*
+    action = {
+      type: "INCREMENT_COUNTER",
+      step:5
+    }
+
+    state = {
+      counter: 0,
+      step:0
+    }
+    */
+
+    function counterReducer(state = { counter: 0, step: 1 }, action) {
+      let newState;
+
+      console.log("state: ", state);
+      console.log("action: ", action);
+
+      switch (action.type) {
+        case "INCREMENT_COUNTER":
+          console.log("case fired....");
+          newState = { ...state, counter: state.counter - action.step, step: action.step };
+          break;
+        default:
+          newState = { ...state };
+          break;
+      }
+
+      console.log("newState: ", newState);
+      return newState;
+    }
+
+    const store = Redux.createStore(counterReducer);
+
+    function incrementActionCreator(x) {
+      return ({
+        type: "INCREMENT_COUNTER",
+        step: x
+      });
+    }
+
+    function increment() {
+      //const action = { type: "INCREMENT_COUNTER" };
+      const step = document.getElementById("txtStep").value;
+      store.dispatch(incrementActionCreator(step));
+
+      return false;
+    }
+
+    store.subscribe(() => {
+      document.getElementById("display").innerHTML = store.getState().counter;
+    });
+
+
+  </script>
+</head>
+
+<body>
+  <h1 id="display">0</h1>
+
+  <br/>
+  <br/>
+  <br/>
+  <form action="">
+    Step:
+    <input id="txtStep" type="number" />
+
+    <br/>
+    <br/>
+    <button type="button" onclick="increment()">Increment</button>
+  </form>
+</body>
+
+</html>

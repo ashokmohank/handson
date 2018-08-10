@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1524744828278" clover="3.2.0">
+  <project timestamp="1524744828278" name="All files">
+    <metrics statements="6" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="1" elements="9" coveredelements="5" complexity="0" loc="6" ncloc="6" packages="1" files="2" classes="2">
+      <file name="beverage.js" path="C:\WORK\SREEKANTH\Training\Training_Material\Web\13_UnitTesting\Jest\0010_Introduction\Code\1\beverage.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+      </file>
+      <file name="sum.js" path="C:\WORK\SREEKANTH\Training\Training_Material\Web\13_UnitTesting\Jest\0010_Introduction\Code\1\sum.js">
+        <metrics statements="4" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="1"/>
+        <line num="2" count="2" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+      </file>
+    </metrics>
+  </project>
+</coverage>

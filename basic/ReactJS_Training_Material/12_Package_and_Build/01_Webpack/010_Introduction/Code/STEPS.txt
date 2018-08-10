@@ -1,0 +1,11 @@
+npm install webpack --save-dev
+
+node_modules\.bin\webpack src\index.js public\build.js
+
+node_modules\.bin\webpack src/index.js public/build.js
+webpack src/index.js public/build.js
+
+-------------------------------
+npm run build
+
+

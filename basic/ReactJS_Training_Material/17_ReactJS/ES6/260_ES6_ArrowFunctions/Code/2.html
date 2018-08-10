@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>ES6 Arrow Functions</title>
+  <script>
+    //'this' keyword in a normal callback function points to global (window) object.So seting 'this' to a temp variable is essential in function constructors
+    // But an arrow function doesn't have a separate 'this'
+    function Person() {
+      this.age = 0;
+      this.bindCounter = 0;
+      this.arrowCounter = 0;
+
+      // Some use variable name 'that' instead of 'self'.
+      let self = this;
+
+      //setTimeout is a callback
+      setTimeout(function () {
+        this.age++; //increment fails
+        self.age++; //increment succeeds
+        console.log("-----this.age: " + this.age);
+        console.log("-----self.age: " + self.age);
+      }, 2000);
+
+      //The only difference between this setTimeout and the first one above is that this one has its callback bound to the 'this' context
+      //The anonymous function is said to be a 'bound' function.
+      setTimeout(function () {
+        this.bindCounter++; //increment succeeds
+        self.bindCounter++; //increment succeeds
+        console.log("*****this.bindCounter: " + this.bindCounter);
+        console.log("*****self.bindCounter: " + self.bindCounter);
+      }.bind(this), 2000);
+
+      //The only difference between this setTimeout and the second one above one is callback is written using an arrow function
+      setTimeout(() => {
+        this.arrowCounter++; //increment succeeds
+        self.arrowCounter++; //increment succeeds
+        console.log("*****this.arrowCounter: " + this.arrowCounter);
+        console.log("*****self.arrowCounter: " + self.arrowCounter);
+      }, 2000);
+    }
+
+    let p = new Person();
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

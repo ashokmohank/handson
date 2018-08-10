@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Component Properties</title>
+    <script src="https://unpkg.com/react@16.0.0/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16.0.0/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+      const rootNode = document.getElementById('root');
+
+      /*
+      function SayHello(props) {
+
+        console.log(props);
+        console.log(`props.name: ${props.name}`);
+        console.log(`props.website: ${props.website}`);
+        console.log(`----------------------------`);
+
+        return (
+            <h1>Hello {props.name}!</h1>
+        )
+      }
+
+      SayHello.defaultProps = {name: 'World'};
+      */
+     
+      class SayHello extends React.Component {
+
+        //Set defaults for properties inside class declaration
+        static defaultProps = {
+          name: "World"
+        };
+
+        render() {
+
+          console.log(this.props);
+          console.log(`this.props.name: ${this.props.name}`);
+          console.log(`this.props.website: ${this.props.website}`);
+          console.log(`----------------------------`);
+
+          return (
+            <h1>Hello {this.props.name}!</h1>
+          )
+        }
+
+      }
+
+      /*
+      A functional component can be converted to a class in four steps:
+        1. Create an ES6 class with the same name that extends React.Component.
+        2. Add a single empty method to it called render().
+        3. Move the body of the function into the render() method.
+        4. Replace props with this.props in the render() body.
+      */
+
+      ReactDOM.render(
+        <div>
+          <SayHello name="World"/>
+           <SayHello name="Sreekanth" website="SreekanthME.com"/>
+          <SayHello/>
+        </div>, 
+        rootNode);
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Component</title>
+    <script src="https://unpkg.com/react@16.0.0/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16.0.0/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+    /*
+      React elements are immutable. Once you create an element, you can't change 
+      its children or attributes. An element is like a single frame in a movie: 
+      it represents the UI at a certain point in time.
+
+      With our knowledge so far, the only way to update the UI is to create a new element, and pass it to ReactDOM.render().
+
+      The same can be achieved without re-rendering by using state and lifecycle 
+      methods.
+    */
+     
+    function tick() {
+      const element = (
+        <div>
+          <h1>Current Time:</h1>
+          <h2>{new Date().toLocaleTimeString()}</h2>
+        </div>
+      );
+
+      ReactDOM.render(
+        element,
+        document.getElementById('root')
+      );
+    }
+
+    setInterval(tick, 1000);
+
+    </script>
+</body>
+
+</html>

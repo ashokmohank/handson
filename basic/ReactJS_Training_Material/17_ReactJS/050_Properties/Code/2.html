@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Component Properties</title>
+    <script src="https://unpkg.com/react@16.0.0/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16.0.0/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+      const rootNode = document.getElementById('root');
+
+      function SayHello(props) {
+
+        console.log(props);
+        console.log(`props.name: ${props.name}`);
+        console.log(`props.website: ${props.website}`);
+        console.log(`----------------------------`);
+
+        return (
+            <h1>Hello {props.name}!</h1>
+        )
+      }
+
+      SayHello.defaultProps = {name: 'World'};
+
+      ReactDOM.render(
+        <div>
+          <SayHello name="World"/>
+           <SayHello name="Sreekanth" website="SreekanthME.com"/>
+          <SayHello/>
+        </div>, 
+        rootNode);
+
+    </script>
+</body>
+
+</html>

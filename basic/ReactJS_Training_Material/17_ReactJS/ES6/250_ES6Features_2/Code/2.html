@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>ES6 Features</title>
+  <script>
+    //Rest Parameters
+    function restFunc1(p1, p2, ...p3) {
+      console.log(`p1: ${p1}`);
+      console.log(`p2: ${p2}`);
+      console.log(`p3: ${p3}`);
+    }
+
+    restFunc1(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+
+    console.log(`-----------------------------`);
+
+    //Destructuring rest parameters
+    function restFunc2(p1, p2, ...[p3, p4]) {
+      console.log(`p1: ${p1}`);
+      console.log(`p2: ${p2}`);
+      console.log(`p3: ${p3}`);
+      console.log(`p4: ${p4}`);
+    }
+
+    restFunc2(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

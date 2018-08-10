@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>JS Mutable</title>
+  <script>
+    let p = [100, 200, 300, 400];
+    console.log("p: " + p);
+    let q = p;
+
+    //Concat does not mutate. It returns a separate copy.
+    console.log("p.concat(500): " + p.concat(500));
+    console.log("q: " + q);
+    console.log("-------------------------------------------");
+
+    let x = {
+      name: "Sreekanth",
+      website: "SreekanthME.com",
+      profession: "Corporate Trainer"
+    };
+    console.log("x: ");
+    console.log(x);
+    let y = x;
+
+    //Using Object.assign()
+    console.log("Object.assign({}, x, {profession: 'Freelance Consultant'}): ");
+    console.log(Object.assign({}, x, {
+      profession: "Freelance Consultant"
+    }));
+    console.log("y: ");
+    console.log(y);
+    console.log("-------------------------------------------");
+
+    let m = {
+      name: "Sreekanth",
+      website: "SreekanthME.com",
+      profession: "Corporate Trainer"
+    };
+    console.log("m: ");
+    console.log(m);
+    let n = m;
+
+    //Using spread operator
+    console.log("{...m, profession: 'Freelance Consultant'}: ");
+    console.log({ ...m,
+      profession: 'Freelance Consultant'
+    });
+    console.log("n: ");
+    console.log(n);
+    console.log("-------------------------------------------");
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

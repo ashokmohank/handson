@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>ES6 - Class</title>
+  <script>
+    //static method
+    class MathClass {
+      constructor(a, b) {
+        this.a = a;
+        this.b = b;
+        this.c = 50;
+      }
+
+      add() {
+        return this.a + this.b;
+      }
+
+      multiply() {
+        return this.a * this.b;
+      }
+
+      static pi() {
+        return 3.14;
+      }
+    }
+
+    var mc1 = new MathClass(5, 8);
+
+    console.log("mc1.add(): " + mc1.add());
+    console.log("mc1.multiply(): " + mc1.multiply());
+    console.log("mc1.c: " + mc1.c);
+
+    console.log("MathClass.pi(): " + MathClass.pi()); ///static method can be called on class directly
+    //console.log("mc1.c: " + mc1.pi()); //static method cannot be called on object
+    console.log("-----------------------------------------------");
+
+    console.log("MathClass.prototype === mc1.__proto__: " + (MathClass.prototype === mc1.__proto__));
+
+    console.log("MathClass.prototype.constructor.name: " + MathClass.prototype.constructor.name);
+
+    console.log("mc1 instanceof MathClass: " + (mc1 instanceof MathClass));
+
+    console.log("typeof mc1: " + (typeof mc1)); //Object
+    console.log("typeof MathClass: " + (typeof MathClass)); //MathClass is actually a constructor Function
+    console.log("-----------------------------------------------");
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

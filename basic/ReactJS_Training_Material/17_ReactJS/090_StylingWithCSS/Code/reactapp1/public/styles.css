@@ -1,0 +1,10 @@
+.app1 {
+  padding: 10px;
+  margin: 10px;
+  background-color: aqua;
+  color: #333;
+  display: inline-block;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 15px;
+  text-align: center;
+}

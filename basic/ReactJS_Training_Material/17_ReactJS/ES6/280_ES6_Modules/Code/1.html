@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>ES6Modules</title>
+
+  <script src="js/babel-browser-build.js"></script>
+  <script src="js/browser-es-module-loader.js"></script>
+
+  <!--
+    import/export is not yet supported in chrome browser. So a polyfill named browser-es-module-loader has been used to make import/export work.
+
+    This polyfill was first installed with below command:
+    npm install browser-es-module-loader --save
+
+    Polyfill details: https://github.com/ModuleLoader/browser-es-module-loader
+
+    After installation, babel-browser-build.js and browser-es-module-loader.js files were copied from folder: .node_modules/browser-es-module-loader/dist
+
+    These files were referenced from this html file using script tag.
+
+    The example module app1.js was referenced through another script tag but with type set to "module".
+  -->
+
+  <script type="module" src="js/app1.js"></script>
+
+  <!--
+    As the script type is "module", chrome does not allow accessing local files. So all the files have to be served over a web server. 
+    For this, a node.js express server has been used.
+
+    Just run the below command to server the files over a local web server:
+    node nodeapp.js
+  -->
+
+</head>
+
+<body>
+
+</body>
+
+</html>
