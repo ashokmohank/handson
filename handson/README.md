@@ -20,6 +20,8 @@ Recreate public/index.html and src/index.js
 - [React Router](#react-router)
 - [Redux](#redux)
 - [react-redux](#react-redux)
+- [Middleware](#middleware)
+- [Integrating API](#integrating-api)
 
 ## JSX
 
@@ -33,7 +35,7 @@ Javascript XML Follows the rules of XML
 - attribute values other than string can be passed as expressions (Ecample: <Hello val={100}>)
 - html attribute names must be camel case (example: class as className, onclick as onClick)
   #JSX Expression
-- IF and FOR cannot be used inside the JSX (<Hello>{ no if or for loop }<//Hello>). However, conditional expression(?:) is allowed.
+- _IF and FOR cannot be used inside the JSX (<Hello>{ no if or for loop }<//Hello>). However, conditional expression(?:) is allowed._
 
 ## Styling
 
@@ -98,12 +100,7 @@ Good practice to validate props. A warning will be shown only in the development
 
 _Good approach_
 
-> <ul\>
->
-> <li key="red"\>red</li\>
-> <li key="green"\>green</li\>
-> <li key="blue"\>blue</li\>
-> </ul\>
+> <ul\> > \<li key="red"\>red</li\> > \<li key="green"\>green</li\> > \<li key="blue"\>blue</li\> > \</ul\>
 
 ## Component Types
 
@@ -143,13 +140,13 @@ _Passing attribute to Components called in Route_
 
 > Refer 7b_ReactRouter
 
-<Route
-path="//get//:id"
+\<Route
+path="/get/:id"
 render={() => {
 const Temp = withRouter(GetInfo);
-return <Temp attr1="test" //>;
+return <Temp attr1="test" \/>;
 }}
-//>
+\/>
 
 - Use withRouter, if you want to pass attributes to the components via the route
 
@@ -189,20 +186,25 @@ A2 --> D
 
 ## react-redux
 
-Summary of Steps to follow:
+_Development Steps_
 
-1.  Create View
-2.  Design Action and State
-3.  Create Reducer
-4.  Create Store(inititalize)
-5.  Create Actions
-6.  Dispatch Actions from View
-7.  Binding View to Store
+1.  Create HTML/ CSS /JS for Static View
+2.  Break Views into Components (Design a react DOM)
+3.  Convert Static HTML to React Static page
+4.  Design a Redux Store and Actions
+5.  Create Reducers
+6.  Create Store(inititalize), then test with Redux dev tools
+7.  Create Actions creators
+8.  Dispatch Actions from View
+9.  Binding (subscribe) View to Store changes
 
-    > npm install --save redux
+_Redux_
 
-8.  Get createStore from Redux
+> npm install --save redux
 
+1.  import createStore from Redux
+
+_react-redux_
 Store to View and View To Action binding is done by react-redux
 
 > npm install --save react-redux
@@ -249,3 +251,31 @@ _Code Refactor_
 
 > Intall redux devtools chrome extension
 > install redux-devtools-extension --save-dev
+
+_Combine Reducers_
+
+> Refer 8b_ReactRedux
+
+If there are multiple reducers, it can be combined
+
+## Middleware
+
+_Custom Middleware_
+
+applyMiddleware is used to bind middleware.
+
+> Refer 9_Middleware
+
+## Integrating API
+
+> Refer 10_Middleware
+
+To handle async in redux, use redux-thunk
+
+> npm install redux-thunk --save
+
+> npm install axios --save
+
+1.  axios is used to hit the api to get response data
+2.  userDetailsAction gets just url as parameter and returns a plain object ({type:"IS_FETCHING"}).
+3.  On applying redux-thunk as middleware, the userDetailsAction becomes capable of handling async callbacks that could return function with two parametersi.e (dipatch, state)
