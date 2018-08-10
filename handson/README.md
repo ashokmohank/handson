@@ -24,6 +24,7 @@ Recreate public/index.html and src/index.js
 - [Integrating API](#integrating-api)
 - [Webpack](#webpack)
 - [Unit testing](#unit-testing)
+- [ESLinting](#eslinting)
 
 ## JSX
 
@@ -165,6 +166,7 @@ return <Temp attr1="test" \/>;
 
 FLUX Patterns
 
+![Redux Flow]https://raw.githubusercontent.com/ashokmohank/handson/master/basic/reduxflow.PNG)
 ```mermaid
 graph LR
 A(Action - Sever/Timer Event) --> D[Dispatcher]
@@ -346,3 +348,11 @@ module.hot.accept();
   \_\_tests\_\_ directory or .spect.js or .test.js
 - TTD is not possible
 - regression testing is achieved through snapshot testing that is supported by jest
+- Enzyme helps to test shallow/full rendering
+
+## ESLinting
+- Static code reviewer
+- Choose AirBnb's Lint
+>npm install eslint --save-dev
+>elsint --init
+- additional configuration could be done in eslint.rc
